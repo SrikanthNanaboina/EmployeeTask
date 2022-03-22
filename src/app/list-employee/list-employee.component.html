@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row m-2 justify-content-center bg-info rounded">
+    <input class="col-lg-7 m-3" type="text" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search">
+    <select class="col-lg-3 m-3 " type="text" [(ngModel)]="searchBy" name="searchBy">
+      <option value="firstName" selected>First name</option>
+      <option value="lastName">Last Name</option>
+      <option value="phoneNumber">Phone Number</option>
+    </select>
+  </div>
+</div>
+<table class="table table-hover">
+
+    <thead>
+
+        <tr class="table-primary">
+  
+          <th (click)="sort('firstName')" scope="col">First Name</th>
+  
+          <th (click)="sort('lastName')" scope="col">Last Name</th>
+  
+          <th scope="col">Designation</th>
+  
+          <th (click)="sort('dateOfBirth')" scope="col">Date Of Birth</th>
+  
+          <th (click)="sort('phoneNumber')" scope="col">Phone Number</th>
+  
+          <th scope="col">Address</th>
+  
+          <th scope="col">City</th>
+
+          <th scope="col">Country</th>
+
+          <th scope="col">Options</th>
+  
+        </tr>
+  
+      </thead>
+
+    <tbody>
+
+        <tr *ngFor="let employee of employeeList | search:searchTerm:searchBy | sort:sortColumn">
+
+            <td>input{{employee.firstName}} &nbsp;</td>
+
+            <td>{{employee.lastName}} &nbsp;</td>
+
+            <td>{{employee.designation}} &nbsp;</td>
+
+            <td>{{employee.dateOfBirth}} &nbsp;</td>
+
+            <td>{{employee.phoneNumber}} &nbsp;</td>
+
+            <td>{{employee.address}} &nbsp;</td>
+
+            <td>{{employee.city}} &nbsp;</td>
+
+            <td>{{employee.country}} &nbsp;</td>
+
+            <td>
+
+              <button  hidden (click)="editEmployee(employee)" class="btn btn-info" type="button">Edit</button>
+
+              <button (click)="deleteEmployee(employee?.id)" class="btn btn-danger mx-3">Delete</button>
+
+            </td>
+
+        </tr>
+
+      </tbody>
+
+</table>

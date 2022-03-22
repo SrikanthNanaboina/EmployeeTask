@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Employee Registration Form</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" [formGroup]="employeeForm" (ngSubmit)="onFormSubmit()" >
+                        <div class="form-group">
+                            <label for="fname">First Name</label>
+                            <input id="fname" type="text" class="form-control"  formControlName="firstName">
+                            <span class="text-danger"
+                                 *ngIf="form['firstName']?.touched && form['firstName'].errors?.['required']">
+                                First Name is required
+                            </span>
+                            <span class="text-danger"
+                                 *ngIf="form['firstName'].errors?.['pattern']">
+                                First Name should have only letters.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input id="lname" type="text" class="form-control" formControlName="lastName">
+                            <span class="text-danger"
+                                 *ngIf="form['lastName']?.touched && form['lastName'].errors?.['required']">
+                                Last Name is required
+                            </span>
+                            <span class="text-danger"
+                                 *ngIf="form['lastName'].errors?.['pattern']">
+                                Last Name should have only letters.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <select id="designation" type="text" class="form-control" formControlName="designation">
+                                <option value="Dev">Dev</option>
+                                <option value="HR">HR</option>
+                                <option value="Manager">Manager</option>
+                                <option value="IT Admin">IT Admin</option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="form['designation']?.touched && form['designation'].errors?.['required']">
+                                Designation is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input id="dateOfBirth" type="date" class="form-control" formControlName="dateOfBirth">
+                            <span class="text-danger"
+                                *ngIf="form['dateOfBirth']?.touched && form['dateOfBirth'].errors?.['required']">
+                                Date of Birth is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="form['dateOfBirth'].errors?.['invalidAge']">
+                                Age should be between 21 to 60 years.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+                            <span class="text-danger"
+                                *ngIf="form['phoneNumber']?.touched && form['phoneNumber'].errors?.['required']">
+                                Phone number is required
+                            </span>
+                            <span class="text-danger"
+                                 *ngIf="form['phoneNumber'].errors?.['pattern']">
+                                Enter Phone Number with country code.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" type="text-area" class="form-control" formControlName="address"></textarea>
+                            <span class="text-danger"
+                                *ngIf="form['address']?.touched && form['address'].errors?.['required']">
+                                Address is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input id="city" type="text" class="form-control" formControlName="city">
+                            <span class="text-danger"
+                                *ngIf="form['city']?.touched && form['city'].errors?.['required']">
+                                City is required
+                            </span>
+                            <span class="text-danger"
+                                 *ngIf="form['city'].errors?.['pattern']">
+                                City should have only letters.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input id="country" type="text" class="form-control" formControlName="country">
+                            <span class="text-danger"
+                                *ngIf="form['country']?.touched && form['country'].errors?.['required']">
+                                Country is required
+                            </span>
+                            <span class="text-danger"
+                                 *ngIf="form['country'].errors?.['pattern']">
+                                Country should have only letters.
+                            </span>
+                        </div>
+                        <div class="form-group my-3">
+                            <button  [disabled]="employeeForm.status!='VALID'" type="submit" class="btn btn-success">Add Employee</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
