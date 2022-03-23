@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import { SortPipe } from './pipes/sort.pipe';
     HeaderComponent,
     RegistrationFormComponent,
     ListEmployeeComponent,
-    EmployeeListComponent,
     SearchPipe,
-    SortPipe
+    SortPipe,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,

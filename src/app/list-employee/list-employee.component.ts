@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../employee.model';
 import { EmployeeService } from '../employee.service';
 
@@ -13,7 +14,7 @@ export class ListEmployeeComponent implements OnInit {
   searchBy:string="firstName";
   sortColumn:string="firstName";
   employeeList:Employee[]=[];
-  constructor(private service:EmployeeService) { }
+  constructor(private service:EmployeeService, private router: Router ,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllEmployees();
@@ -28,7 +29,7 @@ export class ListEmployeeComponent implements OnInit {
     this.employeeList = [...this.employeeList.filter(e=>e.id!=id)];
   }
   editEmployee(employee:Employee){
-    this.service.updateEmployee(employee).subscribe();
+    this.router.navigate(['update',employee]);
   }
   sort(column:string){
     this.sortColumn=column;

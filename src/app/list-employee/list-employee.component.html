@@ -40,7 +40,7 @@
 
         <tr *ngFor="let employee of employeeList | search:searchTerm:searchBy | sort:sortColumn">
 
-            <td>input{{employee.firstName}} &nbsp;</td>
+            <td>{{employee.firstName}} &nbsp;</td>
 
             <td>{{employee.lastName}} &nbsp;</td>
 
@@ -58,7 +58,7 @@
 
             <td>
 
-              <button  hidden (click)="editEmployee(employee)" class="btn btn-info" type="button">Edit</button>
+              <button  (click)="editEmployee(employee)" class="btn btn-info" type="button">Edit</button>
 
               <button (click)="deleteEmployee(employee?.id)" class="btn btn-danger mx-3">Delete</button>
 
