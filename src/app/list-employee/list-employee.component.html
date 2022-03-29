@@ -1,11 +1,12 @@
 <div class="container-fluid">
   <div class="row m-2 justify-content-center bg-info rounded">
-    <input class="col-lg-7 m-3" type="text" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search">
+    <input class="col-lg-5 m-3" type="text"  #searchValueRef name="searchTerm" placeholder="Search">
     <select class="col-lg-3 m-3 " type="text" [(ngModel)]="searchBy" name="searchBy">
       <option value="firstName" selected>First name</option>
       <option value="lastName">Last Name</option>
       <option value="phoneNumber">Phone Number</option>
     </select>
+    <button class="col-lg-2 m-3 btn btn-primary" (click)="search(searchValueRef)">Search</button>
   </div>
 </div>
 <table class="table table-hover">
@@ -14,15 +15,27 @@
 
         <tr class="table-primary">
   
-          <th (click)="sort('firstName')" scope="col">First Name</th>
+          <th (click)="sort('firstName')" scope="col">First Name &nbsp; 
+            <span *ngIf="sortColumn=='firstName' && sortOrder=='asc'">↑</span> &nbsp; 
+            <span *ngIf="sortColumn=='firstName' && sortOrder=='desc'">↓</span>
+          </th>
   
-          <th (click)="sort('lastName')" scope="col">Last Name</th>
+          <th (click)="sort('lastName')" scope="col">Last Name &nbsp; 
+            <span *ngIf="sortColumn=='lastName' && sortOrder=='asc'">↑</span> &nbsp;
+             <span *ngIf="sortColumn=='lastName' && sortOrder=='desc'">↓</span>
+          </th>
   
           <th scope="col">Designation</th>
   
-          <th (click)="sort('dateOfBirth')" scope="col">Date Of Birth</th>
+          <th (click)="sort('dateOfBirth')" scope="col">Date Of Birth  &nbsp; 
+            <span *ngIf="sortColumn=='dateOfBirth' && sortOrder=='asc'">↑</span> &nbsp; 
+            <span *ngIf="sortColumn=='dateOfBirth' && sortOrder=='desc'">↓</span>
+          </th>
   
-          <th (click)="sort('phoneNumber')" scope="col">Phone Number</th>
+          <th (click)="sort('phoneNumber')" scope="col">Phone Number  &nbsp; 
+            <span *ngIf="sortColumn=='phoneNumber' && sortOrder=='asc'">↑</span> &nbsp; 
+            <span *ngIf="sortColumn=='phoneNumber' && sortOrder=='desc'">↓</span>
+          </th>
   
           <th scope="col">Address</th>
   
@@ -38,7 +51,7 @@
 
     <tbody>
 
-        <tr *ngFor="let employee of employeeList | search:searchTerm:searchBy | sort:sortColumn">
+        <tr *ngFor="let employee of (employeeList  | search:searchTerm:searchBy | sort:sortColumn:sortOrder | async)">
 
             <td>{{employee.firstName}} &nbsp;</td>
 

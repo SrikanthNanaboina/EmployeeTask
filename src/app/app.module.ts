@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EmployeeService } from './employee.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,11 +14,12 @@ import { EmployeeService } from '../employee.service';
 export class EditEmployeeComponent implements OnInit {
   id=0;
   editForm = new FormGroup({
+    id:new FormControl(),
     firstName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")]),
     lastName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")]),
     designation: new FormControl('', [Validators.required]),
     dateOfBirth: new FormControl('', [Validators.required, ValidateAge]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^\\+[1-9]{1}[0-9]{3,14}$")]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^[6-9]{1}[0-9]{9}$")]),
     address: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")]),
     country: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")],)
@@ -26,8 +28,11 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.editForm.patchValue(params);
-      this.id=params['id']
+      let employee: Employee;
+       this.service.getEmployee(params['id']).subscribe(
+         res=>employee=res,
+         err=>console.log(err),
+         ()=>this.editForm.patchValue(employee));
     });
   }
   onFormSubmit(){

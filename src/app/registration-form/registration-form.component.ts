@@ -16,7 +16,7 @@ export class RegistrationFormComponent implements OnInit {
     lastName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")]),
     designation: new FormControl('', [Validators.required]),
     dateOfBirth: new FormControl('', [Validators.required, ValidateAge]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^\\+[1-9]{1}[0-9]{3,14}$")]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^[6-9]{1}[0-9]{9}$")]),
     address: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")]),
     country: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ']+$")],)

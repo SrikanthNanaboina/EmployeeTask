@@ -47,12 +47,12 @@
                         <div class="form-group">
                             <label for="dateOfBirth">Date of Birth</label>
                             <input id="dateOfBirth" type="date" class="form-control" formControlName="dateOfBirth">
-                            <span class="text-danger"
+                            <span class="text-danger d-block"
                                 *ngIf="form['dateOfBirth']?.touched && form['dateOfBirth'].errors?.['required']">
                                 Date of Birth is required
                             </span>
-                            <span class="text-danger"
-                                *ngIf="form['dateOfBirth'].errors?.['invalidAge']">
+                            <span class="text-danger d-block"
+                                *ngIf="form['dateOfBirth']?.touched && form['dateOfBirth'].errors?.['invalidAge']">
                                 Age should be between 21 to 60 years.
                             </span>
                         </div>
@@ -65,7 +65,7 @@
                             </span>
                             <span class="text-danger"
                                  *ngIf="form['phoneNumber'].errors?.['pattern']">
-                                Enter Phone Number with country code.
+                                Phone Number should be 10 digits.
                             </span>
                         </div>
                         <div class="form-group">
