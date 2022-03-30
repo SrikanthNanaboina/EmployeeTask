@@ -51,7 +51,7 @@
 
     <tbody>
 
-        <tr *ngFor="let employee of (employeeList  | search:searchTerm:searchBy | sort:sortColumn:sortOrder | async)">
+        <tr *ngFor="let employee of (employeeList  | sort:sortColumn:sortOrder | search:searchTerm:searchBy | async)">
 
             <td>{{employee.firstName}} &nbsp;</td>
 
